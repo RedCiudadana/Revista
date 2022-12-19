@@ -17,9 +17,9 @@ collections:
     fields: # The fields for each document, usually in front matter
       - { name: "title", label: "Nombre de Categoría" }
       - { name: "descripcion", label: "Descripción" }
-  - name: "autor" # Used in routes, e.g., /admin/collections/blog
-    label: "Autor" # Used in the UI
-    folder: "src/autor" # The path to the folder where the documents are stored
+  - name: "autores" # Used in routes, e.g., /admin/collections/blog
+    label: "Autores" # Used in the UI
+    folder: "src/autores" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     editor:
@@ -41,3 +41,69 @@ collections:
       - { name: "fecha", label: "Mes y Año de Edición", widget: "date" }
       - { name: "imagen", label: "Imagen de Edición", widget: "image" }
       - { name: "enlace", label: "Enlace de Edición" }
+  - name: "articulos" # Used in routes, e.g., /admin/collections/blog
+    label: "Artículos" # Used in the UI
+    folder: "src/articulos" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    editor:
+      preview: false # Disable the editor preview and use instead 'preview links'
+    fields: # The fields for each document, usually in front matter
+      - { name: "title", label: "Título" }
+      - { name: "imagen", label: "Imagen del Artículo", widget: "image" }
+      - { name: "descripcion", label: "Descripción" }
+      - {
+          label: "Autor",
+          name: "autor",
+          widget: "relation",
+          collection: "autores",
+          options_length: 50,
+          search_fields: ["title"],
+          value_field: "title",
+          multiple: false,
+        }
+      - {
+          label: "Correo del Autor",
+          name: "autor",
+          widget: "relation",
+          collection: "autores",
+          options_length: 50,
+          search_fields: ["title"],
+          value_field: "correo",
+          multiple: false,
+        }
+      - { name: "fecha", label: "Fecha", widget: "date" }
+      - {
+          name: "categorias",
+          label: "Categorías",
+          widget: "list",
+          fields:
+            {
+              label: "Categoría",
+              name: "categoria",
+              widget: "relation",
+              collection: "categorias",
+              options_length: 50,
+              search_fields: ["title"],
+              value_field: "title",
+              multiple: false,
+            },
+        }
+      - {
+          label: "Ediciones de Revista",
+          name: "ediciones",
+          widget: "relation",
+          collection: "ediciones",
+          options_length: 50,
+          search_fields: ["title"],
+          value_field: "title",
+          multiple: false,
+        }
+      - { name: "contenido", label: "Contenido", widget: "markdown" }
+      - {
+          name: "highlight",
+          label: "Highlight",
+          widget: "boolean",
+          default: false,
+          hint: "Display posts in home's highlights",
+        }
