@@ -78,7 +78,7 @@ collections:
           label: "Categorías",
           widget: "list",
           fields:
-            {
+            - {
               label: "Categoría",
               name: "categoria",
               widget: "relation",
