@@ -64,7 +64,7 @@ collections:
         }
       - {
           label: "Correo del Autor",
-          name: "autor",
+          name: "correoautor",
           widget: "relation",
           collection: "autores",
           options_length: 50,
