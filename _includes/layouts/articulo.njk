@@ -185,7 +185,11 @@
 							</div>
 							<div class="widget-content">
                                 {% for cat in categorias%}
-								<a href="#" class="tag">{{cat}}</a>
+                                {% for categoria in collections.categorias %}
+                                {% if cat == categoria.data.title %}
+								<a href="{{categoria.url}}" class="tag">{{cat}}</a>
+                                {% endif %}
+                                {% endfor %}
                                 {% endfor %}
 							</div>		
 						</div>
