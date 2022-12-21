@@ -184,7 +184,9 @@
 								<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
-								<a href="#" class="tag">{{categorias}}</a>
+                                {% for cat in categorias%}
+								<a href="#" class="tag">{{cat}}</a>
+                                {% endfor %}
 							</div>		
 						</div>
 
