@@ -99,7 +99,7 @@ collections:
           value_field: "title",
           multiple: false,
         }
-      - { name: "body", label: "Contenido", widget: "markdown" }
+      - { name: "contenido", label: "Contenido", widget: "markdown" }
       - {
           name: "highlight",
           label: "Highlight",
