@@ -1,0 +1,4 @@
+{
+    "tags": "ediciones",
+    "permalink": "ediciones/{{ page.fileSlug }}/index.html"
+}

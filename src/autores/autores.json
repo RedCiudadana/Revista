@@ -1,0 +1,4 @@
+{
+    "tags": "autores",
+    "permalink": "autores/{{ page.fileSlug }}/index.html"
+}
