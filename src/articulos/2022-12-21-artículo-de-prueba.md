@@ -15,6 +15,3 @@ contenido: |-
   ![imagen de prueba](/images/posts/single-sm-1.jpg)
 highlight: false
 ---
-E﻿ste es el contenido del primer artículo de prueba
-
-![](/images/posts/single-sm-1.jpg)
