@@ -9,9 +9,12 @@ categorias:
   - Tecnología
   - Vanguardismo
 ediciones: Edición 1
+highlight: false
 contenido: |-
   E﻿ste es el nuevo contenido para usar 
 
   ![imagen de prueba](/images/posts/single-sm-1.jpg)
-highlight: false
 ---
+c﻿ontenido de la pagina de forma markdown
+
+![imagen prueba](/images/posts/single-sm-1.jpg)
