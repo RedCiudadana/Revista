@@ -7,7 +7,12 @@ correoautor: autortec@gmail.com
 fecha: 2022-12-21T16:57:29.721Z
 categorias:
   - Tecnología
+  - Vanguardismo
 ediciones: Edición 1
+contenido: |-
+  E﻿ste es el nuevo contenido para usar 
+
+  ![imagen de prueba](/images/posts/single-sm-1.jpg)
 highlight: false
 ---
 E﻿ste es el contenido del primer artículo de prueba
