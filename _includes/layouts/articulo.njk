@@ -1,7 +1,7 @@
 {% extends "src/base.njk" %}
 
 {% block head %}
-<title>{{title}}</title>
+<title>{{title | slug}}</title>
 
 {% endblock %}
 
@@ -38,7 +38,7 @@
 						</div>
 						<!-- post content -->
 						<div class="post-content clearfix">
-                            {{contenido | rmj | safe}}
+                            {{content | safe}}
 						</div>
 						<!-- post bottom section -->
 						<div class="post-bottom">
