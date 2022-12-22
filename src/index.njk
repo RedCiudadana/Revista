@@ -271,60 +271,6 @@ permalink: "index.html"
 							</div>
 						</div>
 
-						<!-- widget popular posts -->
-						<div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Popular Posts</h3>
-								<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-								{% if collections.articuloHighlight%}
-                                {% for articulo in collections.articuloHighlight%}
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">1</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="/assets/elementos/images/posts/tabs-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">{{articulo.data.title}}</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
-										</ul>
-									</div>
-								</div>
-                                {% endfor %}
-                                {% else %}
-                                <!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="details clearfix">
-										<h6 class="post-title my-0">No hay artículos populares si si hubieran se miraria asi</h6>
-									</div>
-								</div>
-                                <div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<span class="number">1</span>
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="/assets/elementos/images/posts/tabs-1.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">Articulo Especial</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">12/12/12</li>
-										</ul>
-									</div>
-								</div>
-                                {% endif %}
-							</div>		
-						</div>
-
 						<!-- widget newsletter -->
 						<div class="widget rounded">
 							<div class="widget-header text-center">

@@ -27,6 +27,12 @@ collections:
     fields: # The fields for each document, usually in front matter
       - { name: "title", label: "Nombre" }
       - { name: "correo", label: "Correo" }
+      - { name: "descripcion", label: "Descripción" }
+      - { name: "facebook", label: "Facebook", required: false }
+      - { name: "twitter", label: "Twitter", required: false }
+      - { name: "instagram", label: "Instagram", required: false }
+      - { name: "googlees", label: "Google Académico", required: false }
+      - { name: "academia", label: "Academia", required: false }
       - { name: "imagen", label: "Imagen de autor", widget: "image" }
   - name: "ediciones" # Used in routes, e.g., /admin/collections/blog
     label: "Ediciones de Revista" # Used in the UI
@@ -60,16 +66,6 @@ collections:
           options_length: 50,
           search_fields: ["title"],
           value_field: "title",
-          multiple: false,
-        }
-      - {
-          label: "Correo del Autor",
-          name: "correoautor",
-          widget: "relation",
-          collection: "autores",
-          options_length: 50,
-          search_fields: ["title"],
-          value_field: "correo",
           multiple: false,
         }
       - { name: "fecha", label: "Fecha", widget: "date" }
