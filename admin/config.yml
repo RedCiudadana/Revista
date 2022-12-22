@@ -105,7 +105,12 @@ collections:
           label: "Highlight",
           widget: "boolean",
           default: false,
-          hint: "Display posts in home's highlights",
+        }
+      - {
+          name: "highlightesp",
+          label: "Highlight Especial",
+          widget: "boolean",
+          default: false,
         }
   - name: "publicidad" # Used in routes, e.g., /admin/collections/blog
     label: "Publicidad" # Used in the UI
