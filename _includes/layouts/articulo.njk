@@ -27,8 +27,12 @@
 						<div class="post-header">
 							<h1 class="title mt-0 mb-3">{{title}}</h1>
 							<ul class="meta list-inline mb-0">
-								<li class="list-inline-item"><a href="#"><img src="/assets/elementos/images/other/author-sm.png" class="author" alt="author"/>{{autor}}</a></li>
-								<li class="list-inline-item">{{correoautor}}</li>
+								{% for autore in collections.autores%}
+								{% if autore.data.title == autor %}
+								<li class="list-inline-item"><a href="{{autore.url}}"><img class="autor" src="{{autore.data.imagen}}" class="author" alt="author"/>{{autore.data.title}}</a></li>
+								<li class="list-inline-item">{{autore.data.correo}}</li>
+								{% endif %}
+								{% endfor %}
 								<li class="list-inline-item">{{fecha | dateFormat('DD/MM/YYYY')}}</li>
 							</ul>
 						</div>
@@ -72,8 +76,12 @@
 							<img src="/assets/elementos/images/other/avatar-about.png" alt="Katen Doe" />
 						</div>
 						<div class="details">
-							<h4 class="name"><a href="#">{{autor}}</a></h4>
+							{% for autore in collections.autores%}
+							{% if autore.data.title == autor %}
+							<h4 class="name"><a href="{{autore.url}}">{{autor}}</a></h4>
 							<p>Subtitulo</p>
+							{% endif %}
+							{% endfor %}
 							<!-- social icons -->
 							<ul class="social-icons list-unstyled list-inline mb-0">
 								<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>

@@ -1,4 +1,5 @@
 {
     "tags": "autores",
-    "permalink": "autores/{{ page.fileSlug }}/index.html"
+    "permalink": "autores/{{ page.fileSlug }}/index.html",
+    "layout": "/layouts/autor.njk"
 }

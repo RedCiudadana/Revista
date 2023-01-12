@@ -1,0 +1,209 @@
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>Autores | {{title}}</title>
+
+{% endblock %}
+
+{% block content %}
+    <!-- page header -->
+    <section class="page-header">
+        <div class="container-xl">
+            <div class="text-center">
+                <h1 class="mt-0 mb-2">{{title}}</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center mb-0">
+                        <li class="breadcrumb-item"><a href="/index.html">Inicio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Autor</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+	<!-- section main content -->
+	<section class="main-content">
+		<div class="container-xl">
+
+			<div class="row gy-4">
+
+				<div class="col-lg-8">
+
+                    <div class="page-content bordered rounded padding-30">
+
+                        <img src="{{imagen}}" alt="Katen Doe" class="rounded mb-4" />
+
+                        <p>{{descripcion}}</p>
+
+                        <hr class="my-4" />
+                        <ul class="social-icons list-unstyled list-inline mb-0">
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                        
+                    </div>
+
+                    <!-- section header -->
+					<div class="section-header">
+						<h3 class="section-title">Últimos Posts</h3>
+						<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
+					</div>
+
+					<div class="padding-30 rounded bordered">
+
+						<div class="row">
+							{% for articulo in collections.articulos%}
+                            {% if articulo.data.autor == title %}
+							<div class="col-md-12 col-sm-6">
+								
+								<!-- post -->
+								<div class="post post-list clearfix">
+									<div class="thumb rounded">
+										<span class="post-format-sm">
+											<i class="icon-picture"></i>
+										</span>
+										<a href="{{articulo.url}}">
+											<div class="inner">
+												<img src="/assets/elementos/images/posts/latest-sm-1.jpg" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details">
+										<ul class="meta list-inline mb-3">
+											{% for autor in collections.autores%}
+											{% if autor.data.title == articulo.data.autor%}
+											<li class="list-inline-item"><a href="#"><img class="autor" src="{{autor.data.imagen}}" class="author" alt="author"/>{{autor.data.title}}</a></li>
+											<li class="list-inline-item"><a href="#">{{autor.data.correo}}</a></li>
+											{% endif %}
+											{% endfor %}
+											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+										</ul>
+										<h5 class="post-title"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h5>
+										<p class="excerpt mb-0">{{articulo.data.descripcion}}</p>
+										<div class="post-bottom clearfix d-flex align-items-center">
+											<div class="social-share me-auto">
+												<button class="toggle-button icon-share"></button>
+												<ul class="icons list-unstyled list-inline mb-0">
+													<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
+												</ul>
+											</div>
+											<div class="more-button float-end">
+												<a href="{{articulo.url}}"><span class="icon-options"></span></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                            {% endif %}
+							{% endfor %}
+							
+						</div>
+						<!-- load more button -->
+						<div class="text-center">
+							<button class="btn btn-simple">Load More</button>
+						</div>
+
+					</div>
+
+                </div>
+				<div class="col-lg-4">
+
+					<!-- sidebar -->
+					<div class="sidebar">
+						<!-- widget about -->
+
+						<!-- widget popular posts -->
+						<div class="widget rounded">
+							<div class="widget-header text-center">
+								<h3 class="widget-title">Popular Posts</h3>
+								<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
+							</div>
+							<div class="widget-content">
+								<!-- post -->
+								<div class="post post-list-sm circle">
+									<div class="thumb circle">
+										<span class="number">1</span>
+										<a href="blog-single.html">
+											<div class="inner">
+												<img src="/assets/elementos/images/posts/tabs-1.jpg" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item">29 March 2021</li>
+										</ul>
+									</div>
+								</div>
+								<!-- post -->
+								<div class="post post-list-sm circle">
+									<div class="thumb circle">
+										<span class="number">2</span>
+										<a href="blog-single.html">
+											<div class="inner">
+												<img src="/assets/elementos/images/posts/tabs-2.jpg" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item">29 March 2021</li>
+										</ul>
+									</div>
+								</div>
+								<!-- post -->
+								<div class="post post-list-sm circle">
+									<div class="thumb circle">
+										<span class="number">3</span>
+										<a href="blog-single.html">
+											<div class="inner">
+												<img src="/assets/elementos/images/posts/tabs-3.jpg" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item">29 March 2021</li>
+										</ul>
+									</div>
+								</div>
+							</div>		
+						</div>
+
+						<!-- widget categories -->
+						<div class="widget rounded">
+							<div class="widget-header text-center">
+								<h3 class="widget-title">Categorías</h3>
+								<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
+							</div>
+							<div class="widget-content">
+								<ul class="list">
+									{% for category in collections.categorias%}
+									<li><a href="{{category.url}}">{{category.data.title}}</a><!--span>(5)</span--></li>
+									{% endfor %}
+								</ul>
+							</div>
+							
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+{% endblock %}

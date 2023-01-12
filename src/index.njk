@@ -347,8 +347,8 @@ permalink: "index.html"
 										<ul class="meta list-inline mb-3">
 											{% for autor in collections.autores%}
 											{% if autor.data.title == articulo.data.autor%}
-											<li class="list-inline-item"><a href="#"><img class="autor" src="{{autor.data.imagen}}" class="author" alt="author"/>{{autor.data.title}}</a></li>
-											<li class="list-inline-item"><a href="#">{{autor.data.correo}}</a></li>
+											<li class="list-inline-item"><a href="{{autor.url}}"><img class="autor" src="{{autor.data.imagen}}" class="author" alt="author"/>{{autor.data.title}}</a></li>
+											<li class="list-inline-item"><a href="{{autor.url}}">{{autor.data.correo}}</a></li>
 											{% endif %}
 											{% endfor %}
 											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
