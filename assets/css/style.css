@@ -1120,6 +1120,10 @@ section {
   top: 20%;
 }
 
+.post .category-badge:nth-child(3){
+  top: 31.5%;
+}
+
 .post .post-format {
   color: #FFF;
   display: block;
