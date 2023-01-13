@@ -37,7 +37,13 @@
                             <!-- post -->
                             <div class="post post-grid rounded bordered">
                                 <div class="thumb top-rounded">
-                                    <a href="#" class="category-badge position-absolute">{{cat}}</a>
+                                    {% for cat in articulo.data.categorias%}
+									{% for categoria in collections.categorias %}
+									{% if cat == categoria.data.title %}
+									<a href="{{categoria.url}}" class="category-badge position-absolute">{{cat}}</a>
+									{% endif %}
+									{% endfor %}
+									{% endfor %}
                                     <span class="post-format">
                                         <i class="icon-picture"></i>
                                     </span>
@@ -49,7 +55,11 @@
                                 </div>
                                 <div class="details">
                                     <ul class="meta list-inline mb-0">
-                                        <li class="list-inline-item"><a href="#"><img src="/assets/elementos/images/other/author-sm.png" class="author" alt="author"/>{{articulo.data.autor}}</a></li>
+										{% for autore in collections.autores%}
+										{% if autore.data.title == articulo.data.autor %}
+										<li class="list-inline-item"><a href="{{autore.url}}"><img src="{{autore.data.imagen}}" class="autor" alt="author"/>{{articulo.data.autor}}</a></li>
+										{% endif %}
+										{% endfor %}
                                         <li class="list-inline-item">{{articulo.data.correoautor}}</li>
                                     </ul>
                                     <h5 class="post-title mb-3 mt-3"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h5>
@@ -93,39 +103,27 @@
 				<div class="col-lg-4">
 
 					<!-- sidebar -->
-					<div class="sidebar">
-						<!-- widget about -->
-						<div class="widget rounded">
-							<div class="widget-about data-bg-image text-center" data-bg-image="/assets/elementos/images/map-bg.png">
-								<img src="/assets/elementos/images/logo.svg" alt="logo" class="mb-4" />
-								<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
-								<ul class="social-icons list-unstyled list-inline mb-0">
-									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-									<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- widget popular posts -->
-						<div class="widget rounded">
-							<div class="widget-header text-center">
-								<h3 class="widget-title">Popular Posts</h3>
-								<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
-							</div>
-							<div class="widget-content">
-                                {% if collections.articuloHighlight%}
-                                {% for articulo in collections.articuloHighlight%}
+					
+					<!-- post tabs -->
+					<div class="post-tabs rounded bordered">
+						<!-- tab navs -->
+						<ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
+							<li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Populares</button></li>
+							<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recientes</button></li>
+						</ul>
+						<!-- tab contents -->
+						<div class="tab-content" id="postsTabContent">
+							<!-- loader -->
+							<div class="lds-dual-ring"></div>
+							<!-- popular posts -->
+							<div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+								{% for articulo in collections.articulos%}
 								<!-- post -->
 								<div class="post post-list-sm circle">
 									<div class="thumb circle">
-										<span class="number">1</span>
-										<a href="blog-single.html">
+										<a href="{{articulo.url}}">
 											<div class="inner">
-												<img src="/assets/elementos/images/posts/tabs-1.jpg" alt="post-title" />
+												<img style="height:60px" src="{{articulo.data.imagen}}" alt="post-title" />
 											</div>
 										</a>
 									</div>
@@ -136,37 +134,31 @@
 										</ul>
 									</div>
 								</div>
-                                {% endfor %}
-                                {% else %}
-                                <!-- post -->
+								{% endfor %}
+
+							</div>
+							<!-- recent posts -->
+							<div aria-labelledby="recent-tab" class="tab-pane fade" id="recent" role="tabpanel">
+								{% for articulo in collections.articulos%}
+								<!-- post -->
 								<div class="post post-list-sm circle">
-									<div class="details clearfix">
-										<h6 class="post-title my-0">No hay artículos populares si si hubieran se miraria asi</h6>
-									</div>
-								</div>
-                                <div class="post post-list-sm circle">
 									<div class="thumb circle">
-										<span class="number">1</span>
-										<a href="blog-single.html">
+										<a href="{{articulo.url}}">
 											<div class="inner">
-												<img src="/assets/elementos/images/posts/tabs-1.jpg" alt="post-title" />
+												<img style="height:60px" src="{{articulo.data.imagen}}" alt="post-title" />
 											</div>
 										</a>
 									</div>
 									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">Articulo Especial</a></h6>
+										<h6 class="post-title my-0"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h6>
 										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">12/12/12</li>
+											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
 										</ul>
 									</div>
 								</div>
-                                {% endif %}
-
-							</div>		
+								{% endfor %}
+							</div>
 						</div>
-
-						
-
 					</div>
 
 				</div>

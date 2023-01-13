@@ -1115,6 +1115,11 @@ section {
 .post .category-badge:hover {
   background-position: right center;
 }
+
+.post .category-badge:nth-child(2){
+  top: 20%;
+}
+
 .post .post-format {
   color: #FFF;
   display: block;
