@@ -1,0 +1,318 @@
+---
+permalink: "404.html"
+---
+
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>Revista Académica | Red Ciudadana</title>
+
+{% endblock %}
+
+{% block content %}
+	<!-- hero section -->
+	<section id="hero">
+
+		<div class="container-xl">
+
+			<div class="row gy-4">
+
+				<div class="col-lg-8">
+					
+					<!-- featured post large -->
+					{% for articulo in collections.articulos | limitSinPrimero(2)%}
+					<div class="post featured-post-lg">
+						<div class="details clearfix">
+							{% for cat in articulo.data.categorias%}
+							{% for categoria in collections.categorias %}
+							{% if cat == categoria.data.title %}
+							<a href="{{categoria.url}}" class="category-badge">{{cat}}</a>
+							{% endif %}
+							{% endfor %}
+							{% endfor %}
+							<h2 class="post-title"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h2>
+							<ul class="meta list-inline mb-0">
+								{% for autore in collections.autores%}
+								{% if autore.data.title == articulo.data.autor %}
+								<li class="list-inline-item"><a href="{{autore.url}}">{{articulo.data.autor}}</a></li>
+								{% endif %}
+								{% endfor %}
+								<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+							</ul>
+						</div>
+						<a href="{{articulo.url}}">
+							<div class="thumb rounded">
+								<div class="inner data-bg-image" data-bg-image="{{articulo.data.imagen}}"></div>
+							</div>
+						</a>
+					</div>
+					{% endfor %}
+
+				</div>
+
+				<div class="col-lg-4">
+					<!-- post tabs -->
+					<div class="post-tabs rounded bordered">
+						<!-- tab navs -->
+						<ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
+							<li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Populares</button></li>
+							<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recientes</button></li>
+						</ul>
+						<!-- tab contents -->
+						<div class="tab-content" id="postsTabContent">
+							<!-- loader -->
+							<div class="lds-dual-ring"></div>
+							<!-- popular posts -->
+							<div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+								{% for articulo in collections.articulos%}
+								<!-- post -->
+								<div class="post post-list-sm circle">
+									<div class="thumb circle">
+										<a href="{{articulo.url}}">
+											<div class="inner">
+												<img style="height:60px" src="{{articulo.data.imagen}}" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+										</ul>
+									</div>
+								</div>
+								{% endfor %}
+
+							</div>
+							<!-- recent posts -->
+							<div aria-labelledby="recent-tab" class="tab-pane fade" id="recent" role="tabpanel">
+								{% for articulo in collections.articulos%}
+								<!-- post -->
+								<div class="post post-list-sm circle">
+									<div class="thumb circle">
+										<a href="{{articulo.url}}">
+											<div class="inner">
+												<img style="height:60px" src="{{articulo.data.imagen}}" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+										</ul>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<!-- section main content -->
+	<section class="main-content">
+		<div class="container-xl">
+
+			<div class="row gy-4">
+
+				<div class="col-lg-8">
+
+					<!-- section header -->
+					<div class="section-header">
+						<h3 class="section-title">Edición Actual</h3>
+						<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
+					</div>
+
+					<div class="padding-30 rounded bordered">
+						<div class="row gy-5">
+							<div class="col-sm-6">
+								{% for articulo in collections.edicionactual | limit(1)%}
+								<!-- post -->
+								<div class="post">
+									<div class="thumb rounded">
+										{% for cat in articulo.data.categorias%}
+										{% for categoria in collections.categorias %}
+										{% if cat == categoria.data.title %}
+										<a href="{{categoria.url}}" class="category-badge position-absolute">{{cat}}</a>
+										{% endif %}
+										{% endfor %}
+										{% endfor %}
+										<span class="post-format">
+											<i class="icon-picture"></i>
+										</span>
+										<a href="{{articulo.url}}">
+											<div class="inner">
+												<img src="{{articulo.data.imagen}}" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<ul class="meta list-inline mt-4 mb-0">
+										{% for autore in collections.autores%}
+										{% if autore.data.title == articulo.data.autor %}
+										<li class="list-inline-item"><a href="{{autore.url}}"><img src="{{autore.data.imagen}}" class="autor" alt="author"/>{{articulo.data.autor}}</a></li>
+										{% endif %}
+										{% endfor %}
+										<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+									</ul>
+									<h5 class="post-title mb-3 mt-3"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h5>
+									<p class="excerpt mb-0">{{articulo.data.descripcion}}</p>
+								</div>
+								{% endfor %}
+							</div>
+							<div class="col-sm-6">
+								{% for articulo in collections.edicionactual | limitSinPrimero(4)%}
+								<!-- post -->
+								<div class="post post-list-sm square">
+									<div class="thumb rounded">
+										<a href="{{articulo.url}}">
+											<div class="inner">
+												<img src="{{articulo.data.imagen}}" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details clearfix">
+										<h6 class="post-title my-0"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h6>
+										<ul class="meta list-inline mt-1 mb-0">
+											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+										</ul>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+
+					<div class="spacer" data-height="50"></div>
+
+					<!-- horizontal ads -->
+					<div class="ads-horizontal text-md-center">
+						<span class="ads-title">- Sponsored Ad -</span>
+						<a href="#">
+							<img src="/assets/elementos/images/ads/ad-750.png" alt="Advertisement" />
+						</a>
+					</div>
+
+					<div class="spacer" data-height="50"></div>
+
+					
+
+					<div class="spacer" data-height="50"></div>
+
+					<!-- section header -->
+					<div class="section-header">
+						<h3 class="section-title">Últimos Posts</h3>
+						<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
+					</div>
+
+					<div class="padding-30 rounded bordered">
+
+						<div class="row">
+							{% for articulo in collections.articulos | limit(4)%}
+							<div class="col-md-12 col-sm-6">
+								
+								<!-- post -->
+								<div class="post post-list clearfix">
+									<div class="thumb rounded">
+										<span class="post-format-sm">
+											<i class="icon-picture"></i>
+										</span>
+										<a href="{{articulo.url}}">
+											<div class="inner">
+												<img src="/assets/elementos/images/posts/latest-sm-1.jpg" alt="post-title" />
+											</div>
+										</a>
+									</div>
+									<div class="details">
+										<ul class="meta list-inline mb-3">
+											{% for autor in collections.autores%}
+											{% if autor.data.title == articulo.data.autor%}
+											<li class="list-inline-item"><a href="{{autor.url}}"><img class="autor" src="{{autor.data.imagen}}" class="author" alt="author"/>{{autor.data.title}}</a></li>
+											<li class="list-inline-item"><a href="{{autor.url}}">{{autor.data.correo}}</a></li>
+											{% endif %}
+											{% endfor %}
+											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+										</ul>
+										<h5 class="post-title"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h5>
+										<p class="excerpt mb-0">{{articulo.data.descripcion}}</p>
+										<div class="post-bottom clearfix d-flex align-items-center">
+											<div class="social-share me-auto">
+												<button class="toggle-button icon-share"></button>
+												<ul class="icons list-unstyled list-inline mb-0">
+													<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+													<li class="list-inline-item"><a href="#"><i class="far fa-envelope"></i></a></li>
+												</ul>
+											</div>
+											<div class="more-button float-end">
+												<a href="{{articulo.url}}"><span class="icon-options"></span></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+							
+						</div>
+						<!-- load more button -->
+						<div class="text-center">
+							<button class="btn btn-simple">Load More</button>
+						</div>
+
+					</div>
+
+				</div>
+				<div class="col-lg-4">
+					
+					<!-- sidebar -->
+					<div class="sidebar">
+						
+
+						<!-- widget categories -->
+						<div class="widget rounded">
+							<div class="widget-header text-center">
+								<h3 class="widget-title">Categorías</h3>
+								<img src="/assets/elementos/images/wave.svg" class="wave" alt="wave" />
+							</div>
+							<div class="widget-content">
+								<ul class="list">
+									{% for category in collections.categorias%}
+									<li><a href="{{category.url}}">{{category.data.title}}</a><!--span>(5)</span--></li>
+									{% endfor %}
+								</ul>
+							</div>
+							
+						</div>
+
+						<!-- widget advertisement -->
+						<div class="widget no-container rounded text-md-center">
+							<span class="ads-title">- Sponsored Ad -</span>
+							<a href="#" class="widget-ads">
+								<img src="/assets/elementos/images/ads/ad-360.png" alt="Advertisement" />	
+							</a>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block body_javascripts %}
+	
+{% endblock %}
