@@ -10,6 +10,15 @@ module.exports = function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy('assets');
     eleventyConfig.addPassthroughCopy('images');
 
+    /* COLECTIONS */
+
+    eleventyConfig.addCollection('edicionactual', (collectionApi) => {
+        return collectionApi.getFilteredByTag('articulos').filter((item) => {
+            return item.data.ediciones == 'Edición 1';
+        });
+    });
+
+    /* FILTROS */
     eleventyConfig.addNunjucksFilter("rmj", function(content) {
         return rmj(content);
     });
