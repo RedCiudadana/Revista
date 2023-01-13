@@ -20,21 +20,33 @@ permalink: "index.html"
 				<div class="col-lg-8">
 					
 					<!-- featured post large -->
+					{% for articulo in collections.articulos | limitSinPrimero(2)%}
 					<div class="post featured-post-lg">
 						<div class="details clearfix">
-							<a href="category.html" class="category-badge">Inspiration</a>
-							<h2 class="post-title"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h2>
+							{% for cat in articulo.data.categorias%}
+							{% for categoria in collections.categorias %}
+							{% if cat == categoria.data.title %}
+							<a href="{{categoria.url}}" class="category-badge">{{cat}}</a>
+							{% endif %}
+							{% endfor %}
+							{% endfor %}
+							<h2 class="post-title"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h2>
 							<ul class="meta list-inline mb-0">
-								<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-								<li class="list-inline-item">29 March 2021</li>
+								{% for autore in collections.autores%}
+								{% if autore.data.title == articulo.data.autor %}
+								<li class="list-inline-item"><a href="{{autore.url}}">{{articulo.data.autor}}</a></li>
+								{% endif %}
+								{% endfor %}
+								<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
 							</ul>
 						</div>
-						<a href="blog-single.html">
+						<a href="{{articulo.url}}">
 							<div class="thumb rounded">
-								<div class="inner data-bg-image" data-bg-image="/assets/elementos/images/posts/featured-lg.jpg"></div>
+								<div class="inner data-bg-image" data-bg-image="{{articulo.data.imagen}}"></div>
 							</div>
 						</a>
 					</div>
+					{% endfor %}
 
 				</div>
 
@@ -43,8 +55,8 @@ permalink: "index.html"
 					<div class="post-tabs rounded bordered">
 						<!-- tab navs -->
 						<ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
-							<li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Popular</button></li>
-							<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recent</button></li>
+							<li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Populares</button></li>
+							<li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recientes</button></li>
 						</ul>
 						<!-- tab contents -->
 						<div class="tab-content" id="postsTabContent">
@@ -52,137 +64,46 @@ permalink: "index.html"
 							<div class="lds-dual-ring"></div>
 							<!-- popular posts -->
 							<div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+								{% for articulo in collections.articulos%}
 								<!-- post -->
 								<div class="post post-list-sm circle">
 									<div class="thumb circle">
-										<a href="blog-single.html">
+										<a href="{{articulo.url}}">
 											<div class="inner">
-												<img src="/images/posts/tabs-4.jpg" alt="post-title" />
+												<img style="height:60px" src="{{articulo.data.imagen}}" alt="post-title" />
 											</div>
 										</a>
 									</div>
 									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
+										<h6 class="post-title my-0"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h6>
 										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
+											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
 										</ul>
 									</div>
 								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="/images/posts/tabs-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="/images/posts/tabs-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="/images/posts/tabs-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
+								{% endfor %}
+
 							</div>
 							<!-- recent posts -->
 							<div aria-labelledby="recent-tab" class="tab-pane fade" id="recent" role="tabpanel">
+								{% for articulo in collections.articulos%}
 								<!-- post -->
 								<div class="post post-list-sm circle">
 									<div class="thumb circle">
-										<a href="blog-single.html">
+										<a href="{{articulo.url}}">
 											<div class="inner">
-												<img src="/images/posts/tabs-4.jpg" alt="post-title" />
+												<img style="height:60px" src="{{articulo.data.imagen}}" alt="post-title" />
 											</div>
 										</a>
 									</div>
 									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
+										<h6 class="post-title my-0"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h6>
 										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
+											<li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
 										</ul>
 									</div>
 								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="/images/posts/tabs-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="/images/posts/tabs-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm circle">
-									<div class="thumb circle">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="/images/posts/tabs-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
+								{% endfor %}
 							</div>
 						</div>
 					</div>
