@@ -680,14 +680,13 @@ body.down .header-default.clone, body.down .header-personal nav.clone, body.down
   color: #79889e;
 }
 .navbar-nav .nav-link:hover {
-  color: #203656;
+  color: #88B9FF;
 }
 .navbar-nav li.active .nav-link {
-  color: #FFF;
-  border-radius: 25px;
-  background: #FE4F70;
-  background: -webkit-linear-gradient(left, #FE4F70 0%, #FFA387 100%);
-  background: linear-gradient(to right, #FE4F70 0%, #FFA387 100%);
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right, #9B9BFF, #88B9FF) border-box;
+  border-radius: 50em;
+  border: 2px solid transparent;
 }
 
 .navbar-brand {
@@ -1100,7 +1099,7 @@ section {
   left: 20px;
   top: 20px;
   z-index: 1;
-  background: #FE4F70;
+  background: #002E3F!important;
   background: -webkit-linear-gradient(left, #FE4F70 0%, #FFA387 51%, #FE4F70 100%);
   background: linear-gradient(to right, #FE4F70 0%, #FFA387 51%, #FE4F70 100%);
   background-size: 200% auto;
@@ -1201,7 +1200,7 @@ section {
   color: #203656;
 }
 .post .post-title a:hover {
-  color: #FE4F70;
+  color: #88B9FF;
 }
 .post .excerpt {
   font-size: 16px;
@@ -1215,7 +1214,7 @@ section {
   font-weight: 400;
 }
 .post .meta a:hover {
-  color: #FE4F70;
+  color: #88B9FF;
 }
 .post .meta i {
   vertical-align: middle;
@@ -1227,7 +1226,7 @@ section {
 .post .meta li:after {
   content: "";
   display: inline-block;
-  background-color: #FE4F70;
+  background-color: #002E3F;
   border-radius: 50%;
   margin-left: 1rem;
   height: 3px;
@@ -2096,14 +2095,14 @@ section {
 }
 .widget ul.list li a:before {
   content: "";
-  color: #FE4F70;
+  color: #88B9FF;
   font-family: "simple-line-icons";
   font-size: 11px;
   vertical-align: middle;
   margin-right: 25px;
 }
 .widget ul.list li a:hover {
-  color: #FE4F70;
+  color: #88B9FF;
 }
 .widget ul.list li:after {
   content: "";
@@ -2638,9 +2637,10 @@ button:focus {
 }
 
 .nav-pills .nav-link {
-  background: 0 0;
-  border: solid 1px #EBEBEB;
-  border-radius: 30px;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right, #9B9BFF, #88B9FF) border-box;
+  border-radius: 50em;
+  border: 2px solid transparent;
 }
 
 /* === Pagination === */
