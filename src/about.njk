@@ -1,0 +1,146 @@
+---
+permalink: "/about/index.html"
+---
+
+{% extends "src/base.njk" %}
+
+{% block head %}
+<title>Revista Académica | Red Ciudadana</title>
+
+{% endblock %}
+
+{% block content %}
+
+    <!-- page header -->
+    <section class="page-header">
+        <div class="container-xl">
+            <div class="text-center">
+                <h1 class="mt-0 mb-2">Acerca</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center mb-0">
+                        <li class="breadcrumb-item"><a href="/index.html">Inicio</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Acerca</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+	<!-- section main content -->
+	<section class="main-content">
+		<div class="container-xl">
+
+			<div class="row gy-4">
+
+				<div class="col-lg-8">
+
+                    <div class="page-content bordered rounded padding-30">
+
+                        <!--img src="/images/other/about.jpg" alt="Katen Doe" class="rounded mb-4" /-->
+
+                        <p>Hello, I’m a content writer who is fascinated by content fashion, celebrity and lifestyle. She helps clients bring the right content to the right people.</p>
+
+                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                        
+                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+                        
+                        <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
+
+                        <hr class="my-4" />
+                        <ul class="social-icons list-unstyled list-inline mb-0">
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+                        </ul>
+                        
+                    </div>
+
+                </div>
+				<div class="col-lg-4">
+
+					<!-- sidebar -->
+					<div class="sidebar">
+						<!-- widget about -->
+						<div class="widget rounded">
+							<div class="widget-about data-bg-image text-center" data-bg-image="/images/map-bg.png">
+								<img src="/assets/elementos/red/WEB_INNOVACION SOCIAL-03.png" alt="logo" class="mb-4" />
+								<p class="mb-4">Hello, We’re content writer who is fascinated by content fashion, celebrity and lifestyle. We helps clients bring the right content to the right people.</p>
+								<ul class="social-icons list-unstyled list-inline mb-0">
+									<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+									<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
+								</ul>
+							</div>
+						</div>
+
+						<!-- widget popular posts -->
+						<!-- post tabs -->
+                        <div class="post-tabs rounded bordered">
+                            <!-- tab navs -->
+                            <ul class="nav nav-tabs nav-pills nav-fill" id="postsTab" role="tablist">
+                                <li class="nav-item" role="presentation"><button aria-controls="popular" aria-selected="true" class="nav-link active" data-bs-target="#popular" data-bs-toggle="tab" id="popular-tab" role="tab" type="button">Populares</button></li>
+                                <li class="nav-item" role="presentation"><button aria-controls="recent" aria-selected="false" class="nav-link" data-bs-target="#recent" data-bs-toggle="tab" id="recent-tab" role="tab" type="button">Recientes</button></li>
+                            </ul>
+                            <!-- tab contents -->
+                            <div class="tab-content" id="postsTabContent">
+                                <!-- loader -->
+                                <div class="lds-dual-ring"></div>
+                                <!-- popular posts -->
+                                <div aria-labelledby="popular-tab" class="tab-pane fade show active" id="popular" role="tabpanel">
+                                    {% for articulo in collections.articulos%}
+                                    <!-- post -->
+                                    <div class="post post-list-sm circle">
+                                        <div class="thumb circle">
+                                            <a href="{{articulo.url}}">
+                                                <div class="inner">
+                                                    <img style="height:60px" src="{{articulo.data.imagen}}" alt="post-title" />
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+                                <!-- recent posts -->
+                                <div aria-labelledby="recent-tab" class="tab-pane fade" id="recent" role="tabpanel">
+                                    {% for articulo in collections.articulos%}
+                                    <!-- post -->
+                                    <div class="post post-list-sm circle">
+                                        <div class="thumb circle">
+                                            <a href="{{articulo.url}}">
+                                                <div class="inner">
+                                                    <img style="height:60px" src="{{articulo.data.imagen}}" alt="post-title" />
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="details clearfix">
+                                            <h6 class="post-title my-0"><a href="{{articulo.url}}">{{articulo.data.title}}</a></h6>
+                                            <ul class="meta list-inline mt-1 mb-0">
+                                                <li class="list-inline-item">{{articulo.data.fecha | dateFormat('DD/MM/YYYY')}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+
+{% endblock %}
