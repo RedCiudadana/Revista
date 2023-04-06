@@ -3298,3 +3298,17 @@ button:focus {
   border: 1px solid #46495f;
   border-radius: 10px;
 }
+
+.suscribirse{
+  background-color: coral;
+  border-radius: 50em;
+  color: #fff!important;
+  font-weight: 600;
+}
+
+.suscribirse:hover{
+  background-color: #fff;
+  color: #79889e!important;
+  border-color: coral!important;
+  border: 1px solid;
+}
