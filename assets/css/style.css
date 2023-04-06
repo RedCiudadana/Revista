@@ -3265,3 +3265,36 @@ button:focus {
   background-color: #88B9FF;
   border: #88B9FF 1px solid;
 }
+
+/* ----------------------------------------------------------------
+	Contact Form
+-----------------------------------------------------------------*/
+
+.contact-form-overlay {
+  position: relative;
+  background-color: #fff;
+  z-index: 10;
+  border-radius: 4px;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+}
+
+
+.contact_form{
+  width: 100%;
+}
+
+.contact_form input{
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #46495f;
+  border-radius: 10px;
+}
+
+.contact_form textarea{
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #46495f;
+  border-radius: 10px;
+}
