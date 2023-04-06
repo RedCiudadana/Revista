@@ -57,6 +57,7 @@ collections:
     fields: # The fields for each document, usually in front matter
       - { name: "title", label: "Título" }
       - { name: "imagen", label: "Imagen del Artículo", widget: "image" }
+      - { name: "descarga", label: "Enlace de Descarga", widget: "string" }
       - { name: "descripcion", label: "Descripción" }
       - {
           label: "Autor",
